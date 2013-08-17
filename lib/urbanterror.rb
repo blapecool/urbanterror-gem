@@ -9,12 +9,17 @@ class UrbanTerror
     @port = port || 27960
     @rcon = rcon || ''
     @socket = UDPSocket.open
+    @last_status = ''
   end
 
   def send_command(command)
     magic = "\377\377\377\377"
     @socket.send("#{magic}#{command}\n", 0, @server, @port)
     @socket.recv(2048)
+  end
+
+  def update_status
+    @last_status = send_command("getstatus")
   end
 
   def get(command)
@@ -30,14 +35,14 @@ class UrbanTerror
   # doing the same thing and just selecting one from the Hash, so
   # why not just let the user do server.settings['map'] or whatever.
   def settings
-    result = get_parts("status", 1).split("\\").reject(&:empty?)
+    result = get_status_parts(1).split("\\").reject(&:empty?)
     Hash[*result]
   end
   
   # players() returns a list of hashes. Each hash contains
   # name, score, ping.
   def players
-    results = get_parts("status", 2..-1)
+    results = get_status_parts( 2..-1)
     results.map do |player|
       player = player.split(" ", 3)
       {
@@ -88,7 +93,7 @@ class UrbanTerror
   end  
 
   private
-  def get_parts(command, i)
-    get(command).split("\n")[i]
+  def get_status_parts(i)
+    @last_status.split("\n")[i]
   end
 end
