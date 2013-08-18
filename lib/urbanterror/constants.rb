@@ -1,7 +1,7 @@
 module UrbanTerror
   MAX_GEAR = 63
-		
-	GEAR_TYPES = {
+
+  GEAR_TYPES = {
     'knives'   => 0,
     'grenades' => 1,
     'snipers'  => 2,
