@@ -8,7 +8,7 @@ Provides a class and utilities to get informations and control Urban Terror serv
 `gem install urbanterror`
 
 ## Examples
-### Get player list and server's setting 
+### Get player list and server's settings
   
 	require 'urbanterror'
 		
@@ -31,3 +31,17 @@ Provides a class and utilities to get informations and control Urban Terror serv
 		
 	sv = UrbanTerror::Server.new 'myserveraddressonthe.net', 1337, 'myl33tRc0np4$$w0rd'
 	puts sv.rcon 'status'
+
+### Useful utilities inside ;)
+
+	require 'urbanterror'
+	
+	gears = UrbanTerror::reverse_gear_calc 7
+	# Returned value: ["knives", "pistols", "autos", "negev"]
+	
+	gear_code = UrbanTerror::gear_calc ['snipers', 'pistols']
+	# Returned value: 53
+
+	gt = UrbanTerror::gametype_name 8
+	# Returned value "Capture the Flag"
+	
