@@ -10,7 +10,7 @@ module UrbanTerror
     GEAR_TYPES.select{|weapon, gear_val| number & gear_val == 0 }.map(&:first)
   end
   
-  def self.gametype_type(number, abbreviate=false)
+  def self.gametype_name(number, abbreviate=false)
     raise "#{number} is not a valid gametype." unless GAME_MODES.has_key? number
     GAME_MODES[number][abbreviate ? 1 : 0]
   end 
