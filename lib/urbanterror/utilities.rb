@@ -1,12 +1,12 @@
 module UrbanTerror
   
   def self.gear_calc(gear_array)
-    gear_array.each{ |w| raise "No such gear type '#{w}'" unless GEAR_TYPES.has_key?(w) }
-    MAX_GEAR - gear_array.map{|w| GEAR_TYPES[w] }.reduce(:+)
+    gear_array.each{ |weapon| raise "No such gear type '#{weapon}'" unless GEAR_TYPES.has_key?(weapon) }
+    MAX_GEAR - gear_array.map{|weapon| GEAR_TYPES[weapon] }.reduce(:+)
   end
   
   def self.reverse_gear_calc(number)
-    raise "#{number} is outside of the range 0 to 63." unless (0..63).include?(number)
+    raise "#{number} is outside of the range 0 to #{MAX_GEAR}." unless (0..MAX_GEAR).include?(number)
     GEAR_TYPES.select{|weapon, gear_val| number & gear_val == 0 }.map(&:first)
   end
   
