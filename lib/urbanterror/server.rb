@@ -4,11 +4,12 @@ require 'pp'
 module UrbanTerror
   class Server
     attr_reader :players, :settings, :last_status
+    attr_writer :rcon_password
 
-    def initialize(server, port=nil, rcon=nil)
+    def initialize(server, port=nil, rcon_password=nil)
       @server = server
       @port = port || 27960
-      @rcon = rcon || ''
+      @rcon_password = rcon_password || ''
       @socket = UDPSocket.open
     end
 
@@ -33,7 +34,8 @@ module UrbanTerror
     end
 
     def rcon(command)
-      send_command("rcon #{@rcon} #{command}")
+      fail "No rcon password given" if @rcon_password == ''
+      send_command("rcon #{@rcon_password} #{command}")
     end
 
     def get_status_parts(i)
