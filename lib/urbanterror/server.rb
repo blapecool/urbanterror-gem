@@ -35,6 +35,7 @@ module UrbanTerror
 
     def rcon(command)
       fail "No rcon password given" if @rcon_password == ''
+      
       send_command("rcon #{@rcon_password} #{command}")
     end
 
