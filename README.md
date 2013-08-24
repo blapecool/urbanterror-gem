@@ -45,8 +45,8 @@ Provides a class and utilities to get informations and control Urban Terror serv
 	gt = UrbanTerror::gametype_name 8
 	# Returned value: "Capture the Flag"
 	
-        votes = UrbanTerror::reverse_allowvote_calc 538645
-        # Returned value: ["restart", "nextmap", "swapteams", "shuffleteams", "g_friendlyfire", "g_followstrict", "g_gametype", "g_waveRespawns", "g_respawndelay", "redWaveRespawnDelay", "g_blueWaveRespawnDelay", "g_bombExplodeTime", "g_bombDefuseTime", "g_caputureScoreTime", "g_warmup", "g_matchMode", "g_timeouts", "g_timeoutLength", "exec", "g_swapRoles", "g_maxRounds", "g_gear", "cyclemap"]
+	votes = UrbanTerror::reverse_allowvote_calc 538645
+	# Returned value: ["restart", "nextmap", "swapteams", "shuffleteams", "g_friendlyfire", "g_followstrict", "g_gametype", "g_waveRespawns", "g_respawndelay", "redWaveRespawnDelay", "g_blueWaveRespawnDelay", "g_bombExplodeTime", "g_bombDefuseTime", "g_caputureScoreTime", "g_warmup", "g_matchMode", "g_timeouts", "g_timeoutLength", "exec", "g_swapRoles", "g_maxRounds", "g_gear", "cyclemap"]
 
 	votes_code = UrbanTerror::allowvote_calc ['kick', 'map']
 	# Returned value: 1073741803
