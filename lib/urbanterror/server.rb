@@ -19,16 +19,18 @@ module UrbanTerror
     def update_status
       @last_status = send_command("getstatus")
 
-      # Build the settings hash
-      result = get_status_parts(1).split("\\").reject(&:empty?)
-      @settings = Hash[*result]
+      if @last_status == false
+        # Build the settings hash
+        result = get_status_parts(1).split("\\").reject(&:empty?)
+        @settings = Hash[*result]
 
-      # Build the player list
-      @players = []
-      results = get_status_parts(2..-1)
-      results.map do |player|
-        player = player.split(" ", 3)
-        @players << { :name => player[2][1..-2], :ping => player[1].to_i, :score => player[0].to_i }
+        # Build the player list
+        @players = []
+        results = get_status_parts(2..-1)
+        results.map do |player|
+          player = player.split(" ", 3)
+          @players << { :name => player[2][1..-2], :ping => player[1].to_i, :score => player[0].to_i }
+        end
       end
 
       return @last_status
