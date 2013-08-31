@@ -5,14 +5,18 @@ Provides a class and utilities to get informations and control Urban Terror serv
 
 ## Installation
 
-`gem install urbanterror`
+Just do `gem install urbanterror` or build it yourself :
+
+	git clone https://github.com/blapecool/urbanterror-gem.git
+	gem build urbanterror.gemspec
+	sudo gem install urbanterror-4.0.0.gem
 
 ## Examples
 ### Get players list and server's settings
   
 	require 'urbanterror'
 		
-	sv = UrbanTerror::Server.new 'myserveraddressonthe.net' #You can omit port, It'll use the default port: 27960
+	sv = UrbanTerror::Server.new 'myServerAddressOnThe.net' #You can omit port, It'll use the default port: 27960
 	sv.update_status
 		
 	puts 'Player list'
@@ -29,7 +33,7 @@ Provides a class and utilities to get informations and control Urban Terror serv
 
 	require 'urbanterror'
 		
-	sv = UrbanTerror::Server.new 'myserveraddressonthe.net', 1337, 'myl33tRc0np4$$w0rd'
+	sv = UrbanTerror::Server.new 'myServerAddressOnThe.net', 1337, 'myl33tRc0np4$$w0rd'
 	puts sv.rcon 'status'
 
 ### Useful utilities inside ;)
