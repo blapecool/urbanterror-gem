@@ -38,10 +38,13 @@ module UrbanTerror
       send_command("get#{command}")
     end
 
-    def rcon(command)
+    def rcon(command, wait_after_command=false)
       fail "No rcon password given" if @rcon_password == ''
-      
-      send_command("rcon #{@rcon_password} #{command}")
+
+      output = send_command("rcon #{@rcon_password} #{command}")
+      sleep 0.300 if wait_after_command
+
+      return output
     end
 
     def get_status_parts(i)
