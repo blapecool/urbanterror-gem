@@ -6,11 +6,14 @@ module UrbanTerror
     attr_reader :players, :settings, :last_status
     attr_writer :rcon_password
 
-    def initialize(server, port=nil, rcon_password=nil)
+    def initialize(server, port=27960, rcon_password='', timeout=3)
       @server = server
-      @port = port || 27960
-      @rcon_password = rcon_password || ''
+      @port = port
+      @rcon_password = rcon_password
+      @timeout = timeout
+
       @socket = UDPSocket.open
+      @socket.connect(server, port)
     end
 
     def update_status
@@ -22,11 +25,13 @@ module UrbanTerror
 
       # Build the player list
       @players = []
-      results = get_status_parts( 2..-1)
+      results = get_status_parts(2..-1)
       results.map do |player|
         player = player.split(" ", 3)
         @players << { :name => player[2][1..-2], :ping => player[1].to_i, :score => player[0].to_i }
       end
+
+      return @last_status
     end
 
     def get(command)
@@ -46,7 +51,11 @@ module UrbanTerror
     private
     def send_command(command)
       magic = "\377\377\377\377"
-      @socket.send("#{magic}#{command}\n", 0, @server, @port)
+      @socket.send("#{magic}#{command}\n", 0)
+
+      res = IO::select([socket], nil, nil, @timeout)
+      return false if res.nil?
+
       @socket.recv(2048)
     end
   end
