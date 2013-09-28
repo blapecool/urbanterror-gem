@@ -58,7 +58,7 @@ module UrbanTerror
       magic = "\377\377\377\377"
       @socket.send("#{magic}#{command}\n", 0)
 
-      res = IO::select([socket], nil, nil, @timeout)
+      res = IO::select([@socket], nil, nil, @timeout)
       return false if res.nil?
 
       @socket.recv(2048)
