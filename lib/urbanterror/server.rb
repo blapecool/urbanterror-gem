@@ -19,7 +19,7 @@ module UrbanTerror
     def update_status
       @last_status = send_command("getstatus")
 
-      if @last_status == false
+      unless @last_status == false
         # Build the settings hash
         result = get_status_parts(1).split("\\").reject(&:empty?)
         @settings = Hash[*result]
