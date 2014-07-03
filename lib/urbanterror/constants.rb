@@ -1,6 +1,8 @@
 module UrbanTerror
+  # Maximum value possible for the g_allowvote cvar
   MAX_ALLOWVOTE = 1073741823
-
+ 
+  # List of all weapons/items in the game you can allow/disallow with their letter for g_gear calculation
   GEAR_TYPES = {
     "Beretta" => "F",
     "Desert Eagle" => "G",
@@ -29,6 +31,7 @@ module UrbanTerror
     "Extra Ammo" => "X",
   }
 
+  # List of all vote commands in the game you can allow/disallow with their number for g_allowvote bitmask calculation
   VOTES_COMMANDS = {
     'reload'                      => 1,
     'restart'                     => 2,
@@ -62,7 +65,7 @@ module UrbanTerror
     'cyclemap'                    => 536870912,
   }
 
-
+  # List of all game types in the game
   GAME_MODES = {
     0 => ['Free For All',      'FFA'],
     1 => ['Last Man Standing', 'LMS'],
