@@ -40,11 +40,11 @@ Just do `gem install urbanterror` or build it yourself :
 
 	require 'urbanterror'
 	
-	gears = UrbanTerror::reverse_gear_calc 7
-	# Returned value: ["knives", "pistols", "autos", "negev"]
+	gears = UrbanTerror::reverse_gear_calc "NZQS"
+	# Returned value: ["PSG.1", "SR8", "Smoke Grenade", "Goggles"]
 	
-	gear_code = UrbanTerror::gear_calc ['snipers', 'pistols']
-	# Returned value: 53
+	gear_string = UrbanTerror::gear_calc ['SR8', 'Colt1911']
+	# Returned value: "Zg"
 
 	gt = UrbanTerror::gametype_name 8
 	# Returned value: "Capture the Flag"
