@@ -1,15 +1,32 @@
 module UrbanTerror
-  MAX_GEAR = 63
   MAX_ALLOWVOTE = 1073741823
 
   GEAR_TYPES = {
-    'knives'   => 0,
-    'grenades' => 1,
-    'snipers'  => 2,
-    'spas'     => 4,
-    'pistols'  => 8,
-    'autos'    => 16,
-    'negev'    => 32
+    "Beretta" => "F",
+    "Desert Eagle" => "G",
+    "SPAS 12" => "H",
+    "MP5K" => "I",
+    "UMP45" => "J",
+    "HK69" => "K",
+    "LR300ML" => "L",
+    "G36" => "M",
+    "PSG.1" => "N",
+    "SR8" => "Z",
+    "AK.103" => "a",
+    "Negev" => "c",
+    "Colt M4" => "e",
+    "Glock" => "f",
+    "Colt1911" => "g",
+    "MAC11" => "h",
+    "HE Grenade" => "O",
+    "Smoke Grenade" => "Q",
+    "Kevlar Vest" => "R",
+    "Goggles" => "S",
+    "Medkit" => "T",
+    "Silencer" => "U",
+    "Laser" => "V",
+    "Helmet" => "W",
+    "Extra Ammo" => "X",
   }
 
   VOTES_COMMANDS = {
